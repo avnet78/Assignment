@@ -1,0 +1,98 @@
+﻿@model UserSignUp.Domain.User
+@{
+    ViewBag.Title = "User Information";
+}
+<h2>User Information</h2>
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success">
+            <strong>@ViewBag.Message</strong>
+        </div>
+    }
+}
+else
+{
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <label class="form-control">@Html.DisplayFor(model => model.EmailAddress)</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <label class="form-control">@Html.DisplayFor(model => model.FirstName)</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <label class="form-control">@Html.DisplayFor(model => model.LastName)</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <label class="form-control">@Html.DisplayFor(model => model.PhoneNumber)</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AddressLine1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <label class="form-control">@Html.DisplayFor(model => model.AddressLine1)</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AddressLine2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <label class="form-control">@Html.DisplayFor(model => model.AddressLine2)</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <label class="form-control">@Html.DisplayFor(model => model.City)</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <label class="form-control">@Html.DisplayFor(model => model.State)</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ZipCode, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <label class="form-control">@Html.DisplayFor(model => model.ZipCode)</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AllowNotifications, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <label class="form-control">@Html.DisplayFor(model => model.AllowNotifications)</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AllowPromoEmails, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <label class="form-control">@Html.DisplayFor(model => model.AllowPromoEmails)</label>
+        </div>
+    </div>
+</div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        if (ViewBag.Message != null)
+        {
+            <div class="alert alert-danger">
+                <strong>@ViewBag.Message</strong>
+            </div>
+        }
+    }
+}
